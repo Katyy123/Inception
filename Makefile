@@ -10,3 +10,16 @@
 #                                                                              #
 # **************************************************************************** #
 
+all:
+	@sudo echo '127.0.0.1 cfiliber.42.fr' >> /etc/hosts;
+	@sudo docker build -t nginx_img ./srcs/requirements/nginx
+	@sudo docker run --name nginx_cont -d -p 80:80 nginx_img
+
+clean:
+	@sudo docker container stop nginx_cont
+	@sudo docker container rm nginx_cont
+	@sudo docker image rm nginx_img
+
+re: clean all
+
+.PHONY: all clean re

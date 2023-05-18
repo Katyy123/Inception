@@ -12,10 +12,10 @@
 
 FROM debian:buster
 #FROM nginx
-#FROM alpine:3.17
+#FROM alpine:3.13
 RUN apt-get update && apt-get -y install nginx
 #RUN apk update && apk upgrade && \
-       #apk add --no-cache nginx
+#       apk add --no-cache nginx
 
 #RUN apt-get update
 #RUN apk search -v 

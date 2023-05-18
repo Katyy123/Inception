@@ -1,0 +1,10 @@
+version: '3'
+services:
+
+  nginx:
+    build: requirements/nginx
+    image: nginx
+    container_name: nginx_cont
+    ports:
+      - "80:80"
+    restart: always

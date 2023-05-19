@@ -11,16 +11,21 @@
 # **************************************************************************** #
 
 FROM debian:buster
-#FROM nginx
-#FROM alpine:3.13
-RUN apt-get update && apt-get -y install nginx
+
+RUN apt-get update && \
+	apt-get -y install nginx \
+	openssl
+
+RUN openssl req -x509 \
+	-nodes \
+	-days 365 \
+	-subj "/C=IT/ST=RM/O=42RomaLuiss/CN=cfiliber.42.fr" \
+	-newkey rsa:2048 \
+	-keyout /etc/ssl/private/nginx-selfsigned.key \
+	-out /etc/ssl/certs/nginx-selfsigned.crt;
+
 #RUN apk update && apk upgrade && \
 #       apk add --no-cache nginx
-
-#RUN apt-get update
-#RUN apk search -v 
-
-#ECHO "127.0.0.1 cfiliber.42.fr" >> /etc/hosts
 
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
@@ -32,6 +37,6 @@ COPY index.html /var/www/html/
 
 #COPY . /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]

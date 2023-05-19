@@ -13,7 +13,7 @@
 all:
 	@sudo echo '127.0.0.1 cfiliber.42.fr' >> /etc/hosts;
 	@sudo docker build -t nginx ./srcs/requirements/nginx
-	@sudo docker run --name nginx -d -p 80:80 nginx
+	@sudo docker run --name nginx -d -p 443:443 nginx
 
 clean:
 	@sudo docker container stop nginx

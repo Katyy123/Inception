@@ -24,18 +24,11 @@ RUN openssl req -x509 \
 	-keyout /etc/ssl/private/nginx-selfsigned.key \
 	-out /etc/ssl/certs/nginx-selfsigned.crt;
 
-#RUN apk update && apk upgrade && \
-#       apk add --no-cache nginx
+RUN mkdir -p /var/www/html
 
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-#COPY default /etc/nginx/sites-available/default
-
-#COPY index.html /usr/share/nginx/html/
-
-COPY index.html /var/www/html/
-
-#COPY . /usr/share/nginx/html
+#COPY index.html /var/www/html/
 
 EXPOSE 443
 

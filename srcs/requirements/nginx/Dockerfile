@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: catia <catia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 15:00:45 by cfiliber          #+#    #+#              #
-#    Updated: 2023/02/28 15:00:46 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/06/14 16:14:16 by catia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ RUN openssl req -x509 \
 	-keyout /etc/ssl/private/nginx-selfsigned.key \
 	-out /etc/ssl/certs/nginx-selfsigned.crt;
 
-RUN mkdir -p /var/www/html
+#RUN mkdir -p /var/www/html
 
 COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-#COPY index.html /var/www/html/
+##COPY index.html /var/www/html/
 
 EXPOSE 443
 

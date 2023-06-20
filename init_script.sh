@@ -22,18 +22,20 @@ sudo apt-get update
 
 #Install Docker Engine, containerd, and Docker Compose:
 #last version:
-#sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+#type y and enter#
+echo "y"
 #specific version:
-apt-cache madison docker-ce | awk '{ print $3 }'
-VERSION_STRING=5:23.0.0-1~ubuntu.22.04~jammy
-sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
+#apt-cache madison docker-ce | awk '{ print $3 }'
+#VERSION_STRING=5:23.0.0-1~ubuntu.22.04~jammy
+#sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
 
 
 
 #---LINUX POST-INSTALLATION STEPS FOR DOCKER ENGINE to create the docker group and add your user---
 
 #Create the docker group:
-sudo groupadd docker
+#sudo groupadd docker
 
 #Add your user to the docker group:
 sudo usermod -aG docker $USER
@@ -55,13 +57,19 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 #---INSTALL VIM AND MAKE---
 
+#type y and enter
 sudo apt install vim
+#type y and enter
+echo "y"
 sudo apt install make
 
 
 
 #---GENERATE SSH KEY---
 ssh-keygen -t rsa
+echo
+echo
+echo
 
 
 

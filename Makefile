@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: catia <catia@student.42.fr>                +#+  +:+       +#+         #
+#    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 14:58:49 by cfiliber          #+#    #+#              #
-#    Updated: 2023/06/14 16:06:03 by catia            ###   ########.fr        #
+#    Updated: 2023/07/12 17:24:18 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,26 +22,44 @@
 
 # .PHONY: all clean
 
-HOMEDIR = /home/cfiliber
-DOCKER_COMPOSE_FILE	=	./srcs/docker-compose.yml
+# HOMEDIR = /home/cfiliber
+# DOCKER_COMPOSE_FILE	=	./srcs/docker-compose.yml
 
-all:
-	@sudo mkdir -p $(HOMEDIR)/data/wordpress
-	@sudo mkdir -p $(HOMEDIR)/data/mariadb
-	@sudo echo '127.0.0.1 cfiliber.42.fr' >> /etc/hosts;
-	@sudo echo '127.0.0.1 www.cfiliber.42.fr' >> /etc/hosts;
-	@echo "docker-compose up..."
-	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d --build
+# all:
+# 	@sudo mkdir -p $(HOMEDIR)/data/wordpress
+# 	@sudo mkdir -p $(HOMEDIR)/data/mariadb
+# 	@sudo echo '127.0.0.1 cfiliber.42.fr' >> /etc/hosts;
+# 	@sudo echo '127.0.0.1 www.cfiliber.42.fr' >> /etc/hosts;
+# 	@echo "docker-compose up..."
+# 	docker-compose -f $(DOCKER_COMPOSE_FILE) up -d --build
 
-re: clean all
+# re: clean all
 
-stop:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) stop
+# stop:
+# 	docker-compose -f $(DOCKER_COMPOSE_FILE) stop
 
-clean: stop
-	docker-compose -f $(DOCKER_COMPOSE_FILE) down
+# clean: stop
+# 	docker-compose -f $(DOCKER_COMPOSE_FILE) down
 
-ps:
-	docker-compose -f $(DOCKER_COMPOSE_FILE) ps
+# ps:
+# 	docker-compose -f $(DOCKER_COMPOSE_FILE) ps
 
-.PHONY : all re stop clean ps
+# .PHONY : all re stop clean ps
+
+.PHONY: up clean
+#IMAGES := $(shell docker ps -aq)
+
+up:
+	sudo mkdir -p /home/cfiliber.42.fr/data/site
+	sudo mkdir -p /home/cfiliber.42.fr/data/db
+	docker compose -f ./srcs/docker-compose.yml up
+clean:
+	docker compose -f ./srcs/docker-compose.yml down --volumes --remove-orphans
+	docker image prune -af
+	docker volume prune -af
+	docker system prune -a
+fclean:
+	$(docker volume rm $(docker volume ls -q))
+#	$(shell docker rmi -f $(shell docker images -a -q))
+	sudo rm -rf /home/cfiliber.42.fr/data
+#	sudo rm -rf /home/tdi-leo.42.fr/data

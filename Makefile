@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 14:58:49 by cfiliber          #+#    #+#              #
-#    Updated: 2023/07/12 17:24:18 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/07/13 20:19:50 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,4 +62,3 @@ fclean:
 	$(docker volume rm $(docker volume ls -q))
 #	$(shell docker rmi -f $(shell docker images -a -q))
 	sudo rm -rf /home/cfiliber.42.fr/data
-#	sudo rm -rf /home/tdi-leo.42.fr/data

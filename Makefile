@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 14:58:49 by cfiliber          #+#    #+#              #
-#    Updated: 2023/07/13 20:19:50 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/07/15 17:29:40 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,9 @@
 up:
 	sudo mkdir -p /home/cfiliber.42.fr/data/site
 	sudo mkdir -p /home/cfiliber.42.fr/data/db
-	docker compose -f ./srcs/docker-compose.yml up
+	sudo echo '127.0.0.1 cfiliber.42.fr' >> /etc/hosts;
+	sudo echo '127.0.0.1 www.cfiliber.42.fr' >> /etc/hosts;
+	docker compose -f ./srcs/docker-compose.yml up -d
 clean:
 	docker compose -f ./srcs/docker-compose.yml down --volumes --remove-orphans
 	docker image prune -af

@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 15:00:45 by cfiliber          #+#    #+#              #
-#    Updated: 2023/07/17 18:19:10 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/07/17 18:26:25 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ RUN openssl req -x509 \
 
 RUN mkdir -p /etc/ssl
 
-COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+#COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+COPY conf/my.conf /etc/nginx/nginx.conf
 
 COPY tools/configure.sh /bin/configure.sh
 

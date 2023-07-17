@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 14:59:53 by cfiliber          #+#    #+#              #
-#    Updated: 2023/07/17 17:22:20 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/07/17 19:01:27 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,6 @@
 # ENTRYPOINT ["bash", "run.sh"]
 
 FROM alpine:3.17
-
-# RUN apk update && apk upgrade
-# RUN apk add --no-cache mysql mysql-client
 
 RUN apk update && apk upgrade &&\
 	apk add --no-cache mysql mysql-client

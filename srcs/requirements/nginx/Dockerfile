@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 15:00:45 by cfiliber          #+#    #+#              #
-#    Updated: 2023/07/17 18:26:25 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/07/17 18:57:40 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,18 +39,3 @@ EXPOSE 443
 
 #CMD ["nginx", "-g", "daemon off;"]
 ENTRYPOINT [ "/bin/bash" , "/bin/configure.sh" ]
-
-# FROM debian:buster
-
-# RUN apt-get update \
-#     && apt-get install -y nginx openssl \
-#     && rm -rf /var/lib/apt/lists/*
-
-# RUN mkdir -p /etc/ssl
-
-# COPY conf/my.conf /etc/nginx/nginx.conf
-# COPY tools/configure.sh /bin/configure.sh
-
-# EXPOSE 443
-
-# ENTRYPOINT [ "/bin/bash" , "/bin/configure.sh" ]

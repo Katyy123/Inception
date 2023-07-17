@@ -4,7 +4,7 @@ CONF=/var/www/html/wp-config.php
 if [ -f "$CONF" ]; then
 	echo "wordpress is already configured"
 else
-	sleep 5 # mariadb service must configure and restart first
+	sleep 5 # waits for mariadb to configure and restart
 	service php7.3-fpm start
 	cd /var/www/html/
 	wp core download --allow-root

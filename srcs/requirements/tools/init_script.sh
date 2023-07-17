@@ -24,7 +24,7 @@ sudo apt-get update
 #last version:
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 #type y and enter#
-echo "y"
+#echo "y"
 #specific version:
 #apt-cache madison docker-ce | awk '{ print $3 }'
 #VERSION_STRING=5:23.0.0-1~ubuntu.22.04~jammy
@@ -60,16 +60,16 @@ sudo chmod +x /usr/local/bin/docker-compose
 #type y and enter
 sudo apt install vim
 #type y and enter
-echo "y"
+#echo "y"
 sudo apt install make
 
 
 
 #---GENERATE SSH KEY---
 ssh-keygen -t rsa
-echo
-echo
-echo
+#echo
+#echo
+#echo
 
 
 

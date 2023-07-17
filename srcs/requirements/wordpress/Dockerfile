@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Dockerfile                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/07/17 18:54:56 by cfiliber          #+#    #+#              #
+#    Updated: 2023/07/17 19:07:20 by cfiliber         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # #Download the latest version of WordPress
 # RUN wp core download --path=wpclidemo.dev
 
@@ -16,12 +28,6 @@
 # 	#--admin_password=yourpassword --admin_email=admin@example.com
 
 FROM debian:buster
-
-# RUN apt update -y && apt upgrade -y 
-
-# RUN apt install php php-fpm php-mysql php-gd php-curl php-zip -y
-
-# RUN apt install wget -y
 
 RUN apt update -y && apt upgrade -y && \
 	apt install -y php \
@@ -45,10 +51,6 @@ RUN mkdir -p /run/php && chown www-data:www-data /run/php
 COPY tools/configure.sh /bin/configure.sh
 
 COPY conf/www.conf /etc/php/7.3/fpm/pool.d
-
-# RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-# RUN chmod +x wp-cli.phar
-# RUN cp wp-cli.phar /usr/bin/wp
 
 # Download wp-cli.phar.
 # To be able to type just wp, instead of php wp-cli.phar,

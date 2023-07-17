@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 15:00:45 by cfiliber          #+#    #+#              #
-#    Updated: 2023/07/12 17:39:28 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/07/17 16:52:44 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,10 +45,6 @@ RUN mkdir -p /etc/ssl
 COPY conf/my.conf /etc/nginx/nginx.conf
 COPY tools/runner.sh /bin/runner.sh
 
-#EXPOSE 80
 EXPOSE 443
-#EXPOSE 9000
 
-# CMD /bin/bash -c "envsubst < /etc/nginx/my.conf > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"
-# RUN chmod 777 /bin/runner.sh
 ENTRYPOINT [ "/bin/bash" , "/bin/runner.sh" ]

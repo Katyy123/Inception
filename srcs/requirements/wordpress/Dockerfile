@@ -42,7 +42,7 @@ RUN cd /var/www/html && find . -type d -exec chmod 755 {} \; && find . -type f -
 # this creates a folder and sets ownership for the fpm web socket
 RUN mkdir -p /run/php && chown www-data:www-data /run/php
 
-COPY tools/runner.sh /bin/runner.sh
+COPY tools/configure.sh /bin/configure.sh
 
 COPY conf/www.conf /etc/php/7.3/fpm/pool.d
 
@@ -62,4 +62,4 @@ WORKDIR /var/www/html
 EXPOSE 9000
 EXPOSE 3306
 
-ENTRYPOINT [ "/bin/bash" , "/bin/runner.sh" ]
+ENTRYPOINT [ "/bin/bash" , "/bin/configure.sh" ]

@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 14:59:53 by cfiliber          #+#    #+#              #
-#    Updated: 2023/07/17 16:18:54 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/07/17 17:22:20 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,6 @@ FROM alpine:3.17
 RUN apk update && apk upgrade &&\
 	apk add --no-cache mysql mysql-client
 
-COPY tools/runner.sh /tmp/runner.sh
+COPY tools/configure.sh /tmp/configure.sh
 
-ENTRYPOINT [ "sh" , "/tmp/runner.sh" ]
+ENTRYPOINT [ "sh" , "/tmp/configure.sh" ]

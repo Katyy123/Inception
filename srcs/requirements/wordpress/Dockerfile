@@ -6,7 +6,7 @@
 #    By: cfiliber <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/17 18:54:56 by cfiliber          #+#    #+#              #
-#    Updated: 2023/07/17 19:07:20 by cfiliber         ###   ########.fr        #
+#    Updated: 2023/07/18 18:17:53 by cfiliber         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,10 @@ RUN apt install mariadb-client -y
 
 RUN mkdir -p /var/www/html
 RUN chown -R www-data:www-data /var/www/html
+# change the permissions of files and directory under /var/www/html
 RUN cd /var/www/html && find . -type d -exec chmod 755 {} \; && find . -type f -exec chmod 644 {} \;
 
-# this creates a folder and sets ownership for the fpm web socket
+# create a folder for socket Unix file for PHP-FPM and change its ownership
 RUN mkdir -p /run/php && chown www-data:www-data /run/php
 
 COPY tools/configure.sh /bin/configure.sh
